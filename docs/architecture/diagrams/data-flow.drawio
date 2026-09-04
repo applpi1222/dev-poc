@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Azure POC Data Flow" id="0">
+    <mxGraphModel dx="1326" dy="906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="src" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" value="Source Systems&lt;br&gt;REST APIs&lt;br&gt;CSV Files" vertex="1">
+          <mxGeometry height="100" width="160" x="40" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="adf" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" value="&lt;div&gt;Orchestration&lt;/div&gt;Data Ingestion" vertex="1">
+          <mxGeometry height="80" width="160" x="280" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="raw" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Bronze&lt;/span&gt;&lt;/div&gt;Raw Zone" vertex="1">
+          <mxGeometry height="80" width="140" x="520" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="dbx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" value="SQL Transformations" vertex="1">
+          <mxGeometry height="80" width="180" x="740" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="curated" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="Silver&lt;br&gt;Curated Zone" vertex="1">
+          <mxGeometry height="80" width="140" x="1000" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="synapse" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" value="Databricks" vertex="1">
+          <mxGeometry height="70" width="140" x="1000" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="ml" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;" value="ML / AI Models" vertex="1">
+          <mxGeometry height="70" width="140" x="1110" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="pbi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" value="Power BI&#xa;Dashboards" vertex="1">
+          <mxGeometry height="80" width="160" x="1000" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="src" target="adf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="adf" target="raw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="raw" target="dbx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="dbx" target="curated">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="curated" target="synapse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="yvSLk4zSb0YWs9BTGjSU-4" style="exitX=0.323;exitY=1.043;exitDx=0;exitDy=0;exitPerimeter=0;" target="pbi">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="ml" style="exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="pbi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-1" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="Staging" vertex="1">
+          <mxGeometry height="80" width="140" x="760" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-2" edge="1" parent="1" source="dbx" style="exitX=0.25;exitY=0;exitDx=0;exitDy=0;" target="yvSLk4zSb0YWs9BTGjSU-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="270" as="sourcePoint" />
+            <mxPoint x="760" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-3" edge="1" parent="1" source="yvSLk4zSb0YWs9BTGjSU-1" style="entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="dbx">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="160" as="sourcePoint" />
+            <mxPoint x="827" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-4" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="Gold" vertex="1">
+          <mxGeometry height="80" width="140" x="1000" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-6" edge="1" parent="1" source="synapse" style="entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="yvSLk4zSb0YWs9BTGjSU-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="1000" y="610" as="sourcePoint" />
+            <mxPoint x="1055" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yvSLk4zSb0YWs9BTGjSU-7" edge="1" parent="1" source="yvSLk4zSb0YWs9BTGjSU-4" style="entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ml">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="1130" y="380" as="sourcePoint" />
+            <mxPoint x="1185" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
